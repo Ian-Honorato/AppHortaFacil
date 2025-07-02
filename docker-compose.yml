@@ -1,0 +1,57 @@
+# Arquivo: docker-compose.yml (Versão Corrigida)
+
+services:
+  # Serviço do Banco de Dados (MariaDB)
+  db:
+    image: mariadb:10.6
+    container_name: meu_projeto_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: agendamentos
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      # CORREÇÃO: A porta do seu PC (host) 3307 é mapeada para a porta 3306 do container.
+      - "3307:3306"
+
+  # Serviço do Backend (Node.js/Express)
+  backend:
+    build:
+      context: ./backend/Agendamentos
+    container_name: meu_projeto_backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend/Agendamentos:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run dev
+    # CORREÇÃO: A seção depends_on agora está limpa.
+    depends_on:
+      - db
+    environment:
+      NODE_ENV: development
+      DATABASE_HOST: db
+      DATABASE_USER: root
+      DATABASE_PASS: ""
+      DATABASE: agendamentos
+      DATABASE_PORT: 3306
+      # ------------------------
+      TOKEN_SECRET: aoshdjkLKLÇJÇmfasbihba@_askdnasjonfQ@masçmfass**nasfnaSNDMAçs
+      TOKEN_EXPIRATION: 7d
+
+  # Serviço do Frontend (Ionic/Angular com Nginx)
+  frontend:
+    build:
+      context: ./frontend/Projeto_inter
+    container_name: meu_projeto_frontend
+    ports:
+      - "4200:80"
+    restart: unless-stopped
+    depends_on:
+      - backend
+
+volumes:
+  db_data:
