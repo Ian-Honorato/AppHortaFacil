@@ -45,7 +45,8 @@ Garantia de integridade nas operações de troca.
 
 ## 🌍 Objetivo do Projeto
 
-O **HortaFácil** nasceu para democratizar a agricultura urbana e combater o desperdício, oferecendo uma solução tecnológica que incentiva a troca de alimentos entre vizinhos e o cultivo em espaços urbanos.
+O **HortaFácil** nasceu para democratizar a agricultura urbana e combater o desperdício, oferecendo uma solução tecnológica que incentiva a troca de alimentos entre vizinhos e o cultivo em espaços urbanos.  
+Esse projeto foi desenvolvido no **sexto semestre do curso de Sistemas para Internet**, como parte do Trabalho Interdisciplinar, integrando conhecimentos de backend, frontend e banco de dados.
 
 ---
 
@@ -55,5 +56,3 @@ Contribuições são bem-vindas!
 Sinta-se à vontade para abrir *issues* ou *pull requests* para melhorias, correções ou novas funcionalidades.
 
 ---
-
-
